@@ -1,0 +1,29 @@
+apiVersion: apps/v1 # apps API group
+kind: Deployment
+metadata:
+  name: stresscpu
+  labels:
+    app: stresscpu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stresscpu
+  template:
+    metadata:
+      labels:
+        app: stresscpu
+    spec: # Pod spec
+      containers:
+      - name: stresscpu
+        image: jfusterm/stress:latest
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        args: ["-c", "stress --cpu $((1 + $RANDOM % 10))"]
+        resources:
+          requests:
+            cpu: 10m
+            memory: 64Mi
+          limits:
+            cpu: 10m
+            memory: 64Mi
