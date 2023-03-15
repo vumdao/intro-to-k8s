@@ -7,10 +7,10 @@ metadata:
 spec:
   ports:
   - port: 6379
-    protocol: TCP # default 
+    protocol: TCP # default
     name: redis # optional when only 1 port
   selector:
-    tier: data 
+    tier: data
   type: ClusterIP # default
 ---
 apiVersion: apps/v1 # apps API group

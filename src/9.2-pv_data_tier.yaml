@@ -7,10 +7,10 @@ metadata:
 spec:
   ports:
   - port: 6379
-    protocol: TCP # default 
+    protocol: TCP # default
     name: redis # optional when only 1 port
   selector:
-    tier: data 
+    tier: data
   type: ClusterIP # default
 ---
 apiVersion: v1
@@ -22,7 +22,7 @@ spec:
     storage: 1Gi # 1 gibibyte
   accessModes:
     - ReadWriteOnce
-  awsElasticBlockStore: 
+  awsElasticBlockStore:
     volumeID: INSERT_VOLUME_ID # replace with actual ID
 ---
 apiVersion: v1
@@ -34,7 +34,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 128Mi # 128 mebibytes 
+      storage: 128Mi # 128 mebibytes
 ---
 apiVersion: apps/v1 # apps API group
 kind: Deployment
