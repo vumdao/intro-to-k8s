@@ -22,15 +22,10 @@ spec:
           image: lrakai/microservices:counter-v1
           env:
             - name: API_URL
-              # DNS for service discovery
-              # Naming pattern:
-              #   IP address: <service_name>.<service_namespace>
-              #   Port: needs to be extracted from SRV DNS record
               value: http://app-tier:8080
 
         - name: poller
           image: lrakai/microservices:poller-v1
           env:
             - name: API_URL
-              # omit namespace to only search in the same namespace
-              value: http://app-tier:$(APP_TIER_SERVICE_PORT)
+              value: http://app-tier:8080
